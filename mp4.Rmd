@@ -3,6 +3,63 @@ title: "Mini project 4"
 author: "By: Greta Mundt, Talia Seshaiah and Sonia Garfinkel"
 output: html_document
 ---
+
+```{r message = FALSE}
+library(mdsr)
+library(RMySQL)
+```
+
 ```{r}
+db <- dbConnect_scidb(dbname = "imdb")
+class(db)
+```
+
+```{r}
+db %>%
+  dbGetQuery("SELECT *
+             FROM title
+             WHERE kind_id = 1
+             AND production_year >= 2008 AND production_year <= 2018
+             ORDER BY production_year DESC;")
+
+```
+
+
+```{r}
+decade_movie <- db %>% 
+  dbGetQuery("SELECT id, title, kind_id, production_year
+             FROM title
+             WHERE kind_id = '1'
+             AND production_year >= 2008 AND production_year <= 2018
+             ORDER BY production_year desc;")
+
+f_director <- db %>%
+  dbGetQuery("SELECT n.name, n.gender, ci.role_id, ci.person_id, ci.movie_id
+             FROM cast_info ci
+             JOIN name n ON n.id = ci.person_id
+             WHERE ci.role_id = '8'
+             AND n.gender = 'f';")
+
+m_director <- db %>%
+  dbGetQuery("SELECT n.name, n.gender, ci.role_id, ci.person_id, ci.movie_id
+             FROM cast_info ci
+             JOIN name n ON n.id = ci.person_id
+             WHERE ci.role_id = '8'
+             AND n.gender = 'm';")
+```
+
+
+###Joining tables to get our "final" data set/table
+```{r}
+f_director2 <- f_director %>%
+  inner_join(decade_movie, by = c("movie_id" = "id"))
+ 
+m_director2 <- m_director %>%
+  inner_join(decade_movie, by = c("movie_id" = "id"))
+  
+```
+
+
+
 
 ```
