@@ -7,6 +7,8 @@ output: html_document
 ```{r message = FALSE}
 library(mdsr)
 library(RMySQL)
+library(dplyr)
+library(babynames)
 ```
 
 ```{r}
@@ -59,7 +61,54 @@ m_director2 <- m_director %>%
   
 ```
 
-
-
+```{r}
+f_director2 %>%
+  filter(gender == "f") %>%
+  group_by(production_year) %>%
+  summarize(N = n(), 
+            total = sum(n),
+            female = sum(ifelse(gender == "f", n, 0)))
 
 ```
+
+
+```{r}
+babynames %>%
+  filter(name == "Jackie") %>%
+  group_by(year) %>%
+  summarize(N = n(), 
+            total = sum(n), 
+            boys = sum(ifelse(sex == "M", n, 0)))
+```
+
+
+
+
+
+
+
+###Our graph
+```{r}
+director <- rbind(f_director2, m_director2)
+
+director2 <- director%>%
+  arrange(desc(production_year)) %>%
+  mutate(sum = count(n))
+  
+  
+  filter(gender == "f", production_year == 2015) %>%
+  summarize(num_rows = n(), = max(n))
+
+director %>%
+  group_by(production_year, gender) %>%
+  arrange(desc(production_year))
+  mutate(count = n())
+
+
+
+ggplot(director, aes(x = production_year, y = gender)) + 
+  geom_line()
+                                                   
+                                                   
+```
+
