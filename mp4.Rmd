@@ -62,13 +62,20 @@ m_director2 <- m_director %>%
 ```
 
 ```{r}
-f_director2 %>%
+f_director_count <- f_director2 %>%
   filter(gender == "f") %>%
   group_by(production_year) %>%
-  summarize(N = n(), 
-            total = sum(n),
-            female = sum(ifelse(gender == "f", n, 0)))
+  summarize(N = n())
 
+director_count<- director %>%
+  filter()%>%
+  group_by(production_year)%>%
+  summarize(N = n())
+```
+```{r}
+ggplot(f_director_count, aes(x = production_year, y = N)) + 
+  geom_line()
+                          
 ```
 
 
