@@ -64,6 +64,8 @@ m_director2 <- m_director %>%
 ```
 
 ```{r warning = FALSE}
+director <- rbind(f_director2, m_director2)
+
 f_director_count <- f_director2 %>%
   filter(gender == "f") %>%
   group_by(production_year) %>%
