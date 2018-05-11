@@ -18,7 +18,7 @@ db <- dbConnect_scidb(dbname = "imdb")
 class(db)
 ```
 
-```{r eval = FALSE }
+```{r warning = FALSE }
 db %>%
   dbGetQuery("SELECT *
              FROM title
@@ -90,28 +90,8 @@ ggplot(director_count, aes(x = production_year, y = N, color = gender)) +
 
 
 
-###Our graph
-```{r}
-director <- rbind(f_director2, m_director2)
-
-director2 <- director%>%
-  arrange(desc(production_year)) %>%
-  mutate(sum = count(n))
-  
-  
-  filter(gender == "f", production_year == 2015) %>%
-  summarize(num_rows = n(), = max(n))
-
-director %>%
-  group_by(production_year, gender) %>%
-  arrange(desc(production_year))
-  mutate(count = n())
 
 
 
-ggplot(director, aes(x = production_year, y = gender)) + 
-  geom_line()
-                                                   
-                                                   
-```
+
 
