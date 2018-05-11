@@ -15,8 +15,7 @@ library(babynames)
 db <- dbConnect_scidb(dbname = "imdb")
 class(db)
 ```
-
-```{r}
+```{r, eval = FALSE }
 db %>%
   dbGetQuery("SELECT *
              FROM title
@@ -69,24 +68,18 @@ f_director_count <- f_director2 %>%
 
 director_count<- director %>%
   filter()%>%
-  group_by(production_year)%>%
+  group_by(production_year, gender)%>%
   summarize(N = n())
+           
 ```
+
 ```{r}
-ggplot(f_director_count, aes(x = production_year, y = N)) + 
-  geom_line()
+ggplot(director_count, aes(x = production_year, y = N, color = gender)) + 
+  geom_point() + 
+  ggtitle("Gender divide in directors over the past decade")
                           
 ```
 
-
-```{r}
-babynames %>%
-  filter(name == "Jackie") %>%
-  group_by(year) %>%
-  summarize(N = n(), 
-            total = sum(n), 
-            boys = sum(ifelse(sex == "M", n, 0)))
-```
 
 
 
