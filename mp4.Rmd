@@ -1,10 +1,12 @@
 ---
-title: "Mini project 4"
+title: "Whose show business?: A gendered breakdown of directors in the past 10 years
+"
 author: "By: Greta Mundt, Talia Seshaiah and Sonia Garfinkel"
 output: 
   html_document:
     code_folding: hide
 ---
+Problem Statement: In this project, we are trying to understand the gender divide among Hollywood. By comparing the number of directors who are women to the number of directors who are men, we can understand where the problems of female representation in films are coming from.
 
 ```{r message = FALSE}
 library(mdsr)
@@ -77,6 +79,11 @@ director_count<- director %>%
   summarize(N = n())
            
 ```
+Hollywood has a gender problem. Although women account for half of America’s population, numbers of leading ladies and roles for women are abysmal. The number of women working on films off screen is even lower. Beyond the making of films, women in both off screen and on screen roles are underrepresented and poorly treated.
+	Many films even have difficulty passing the Bechdel Test, a basic measure of the representation of women in media. Coined by Alison Bechdel in her comic Dykes to Watch Out For (1983), the Bechdel Test has three criteria: 1) The film must have at least two women in it, 2) Who talk to each other, 3) about something that is not a man. However, an unfortunate amount of films do not pass this basic test (bechdeltest.com). An even more satirical test is the Sexy Lamp Test, coined by comic creator Kelly Sue DeConnick. A movie fails the test if the female character of the film could be replaced by a sexy lamp without ruining the plot of the film (lifehacker.com). Films created by women in roles like director and screenwriter are far more likely to have stronger representation of women, because women value telling the stories of women.
+	Women’s problems in Hollywood do not end with issues of representation. The #MeToo movement has recently brought to light the issues of sexual abuse and harassment within the film industry. In the wake of #MeToo, allegations of sexual abuse and harassment against prominent men in Hollywood have occurred, including Harvey Weinstein and Bill Cosby (theatlantic.com). Many reasons, including women having less power in the film industry and being paid less than their male counterparts are reasons as to why women have had problems speaking up about these issues in the past (theatlantic.com). Even though now, in the wake of the #MeToo movement more women are speaking up, this is only the tip of the iceberg. The problem of sexual harassment and abuse still runs deep through Hollywood’s veins. 
+Some argue that Hollywood’s representation problem is driven by the American public, claiming that films with women in leading roles and films directed by women have less successful box office openings than films made by their male counterparts. However, this is strictly not true. The American population wants diversity in films. The “2015 Hollywood Diversity Report”, conducted at UCLA, found that films featuring diverse casts in relation to their peer had the highest median box office returns, showing that the American public is willing to support movies with high representation (npr.org). Unfortunately, since the vast majority of people in positions of power in Hollywood are men, they are unlikely to expand the representation for fear of becoming obsolete in the industry.
+After reading this blog post, you might be wondering what you, as a consumer of media, can do to help. There are several courses of action to take. The first is to attend movies with strong women leads and directors who are women in the box office weekend. Oftentimes, films are marked successes or failures based on their opening weekend revenues, so by buying tickets for films in their first weekend you influence whether they are box office successes or failures. In the same vein, buying merchandise for films that you support both increases revenue and brings publicity to the film. Additionally, as a media consumer, you can think critically about whose stories are being told, and who are telling the stories. While thinking critically, you can voice concerns over issues of gender representation through social media platforms like Twitter. Solving the issue of gender representation is an uphill battle, but it is not insurmountable. You can use your voice to enact change in Hollywood and call for better gender representation within the film industry. 
 
 ```{r warning = FALSE}
 ggplot(director_count, aes(x = production_year, y = N, color = gender)) + 
@@ -84,6 +91,11 @@ ggplot(director_count, aes(x = production_year, y = N, color = gender)) +
   ggtitle("Gender divide in directors over the past decade")
                           
 ```
+Our graph that we show below is showing a gendered break down between male and female directors of movies in the past 10 years. This information initially comes from the IMDB database, which has all movies ever. Because we were not able to isolate only American movies, this dataset take into account movies from all over the world. Additionally, the dataset is not complete with all of the movies from 2017, so while the graphs shows a sudden drop in directors in 2017, that is inaccurate. However, because sexism is faced in the movie industry all over this world, this dataset is an accurate representation of sexism in the movie industry. 
+However, there is hope for the future! In the wake of the #Metoo movement, society, (though slow) is moving forward to a more equitable future between all the genders. The graph shows that while male directors seem to be having a more sporadic increase (and decrease) in numbers, the number of female directors is steadily going up. 
+
+
+
 
 
 
