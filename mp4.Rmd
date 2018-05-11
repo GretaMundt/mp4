@@ -18,7 +18,7 @@ db <- dbConnect_scidb(dbname = "imdb")
 class(db)
 ```
 
-```{r warning = FALSE }
+```{r eval = FALSE }
 db %>%
   dbGetQuery("SELECT *
              FROM title
