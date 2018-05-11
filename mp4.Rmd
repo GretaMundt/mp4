@@ -13,11 +13,12 @@ library(dplyr)
 library(babynames)
 ```
 
-```{r}
+```{r warning = FALSE}
 db <- dbConnect_scidb(dbname = "imdb")
 class(db)
 ```
-```{r, eval = FALSE }
+
+```{r eval = FALSE }
 db %>%
   dbGetQuery("SELECT *
              FROM title
@@ -28,7 +29,7 @@ db %>%
 ```
 
 
-```{r}
+```{r warning = FALSE}
 decade_movie <- db %>% 
   dbGetQuery("SELECT id, title, kind_id, production_year
              FROM title
@@ -53,7 +54,7 @@ m_director <- db %>%
 
 
 ###Joining tables to get our "final" data set/table
-```{r}
+```{r warning = FALSE}
 f_director2 <- f_director %>%
   inner_join(decade_movie, by = c("movie_id" = "id"))
  
@@ -62,7 +63,7 @@ m_director2 <- m_director %>%
   
 ```
 
-```{r}
+```{r warning = FALSE}
 f_director_count <- f_director2 %>%
   filter(gender == "f") %>%
   group_by(production_year) %>%
@@ -75,7 +76,7 @@ director_count<- director %>%
            
 ```
 
-```{r}
+```{r warning = FALSE}
 ggplot(director_count, aes(x = production_year, y = N, color = gender)) + 
   geom_point() + 
   ggtitle("Gender divide in directors over the past decade")
