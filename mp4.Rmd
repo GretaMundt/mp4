@@ -1,7 +1,9 @@
 ---
 title: "Mini project 4"
 author: "By: Greta Mundt, Talia Seshaiah and Sonia Garfinkel"
-output: html_document
+output: 
+  html_document:
+    code_folding: hide
 ---
 
 ```{r message = FALSE}
